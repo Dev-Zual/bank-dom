@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>wellcome your banking system</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body>
+    <header>
+        <h1 class="text-4xl text-center mt-16">Let's Get Some <span class="text-cyan-600 ">Mooooooooney !!</span></h1>
+    </header>
+    <main>
+        <section class="container w-3/4 mx-auto mt-4">
+            <div class="grid grid-cols-3 gap-4">
+                <div class="bg-blue-300 font-semibold p-6 rounded text-white">
+                    <h3>Deposit</h>
+                    <h4 class="text-3xl">$<span id="diposit-balance"> 00</span></h4>
+                </div>
+                <div class="bg-green-300 font-semibold p-6 rounded text-white">
+                    <h3>Withdraw</h>
+                    <h4 class="text-3xl">$<span id="withdraw">00</span></h4>
+                </div>
+                <div class="bg-yellow-300 font-semibold p-6 rounded text-white">
+                    <h3>Balance</h>
+                    <h4 class="text-3xl">$<span id="diposit-total">1000</span></h4>
+                </div>
+               
+            </div>
+        </section>
+        <section class="container w-3/4 mx-auto mt-5">
+            <div class="grid grid-cols-2 gap-4">
+                <div class="bg-red-300 rounded p-5">
+                    <h3 class="text-2xl mb-3 font-semibold">Please Diposit</h3>
+                    <input class="border mb-2 w-3/4 font-semibold rounded-md py-1 px-2" type="text" name="" id="input-diposit" placeholder="$ please diposit here">
+                    <br>
+                    <button id="diposit-btn" class="bg-red-400 px-6 text-white font-semibold py-2 rounded-md">Diposit</button>
+                </div>
+                <div class="bg-pink-300 rounded p-5">
+                    <h3 class="text-2xl mb-3 font-semibold">Please Withdraw</h3>
+                    <input class="border mb-2 w-3/4 font-semibold rounded-md py-1 px-2" type="text" name="" id="input-widthdraw" placeholder="$ please Withdraw here">
+                    <br>
+                    <button id="widthdraw-btn" class="bg-red-400 px-6 text-white font-semibold py-2 rounded-md">Withdraw</button>
+                </div>
+            </div>
+        </section>
+    </main>
+    <script src="js/bank.js"></script>
+</body>
+</html>
