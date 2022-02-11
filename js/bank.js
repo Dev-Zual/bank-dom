@@ -39,19 +39,23 @@ document.getElementById('diposit-btn').addEventListener('click', function () {
     // call the function input field
   const convertNewDiposit = getInputField('input-diposit');
     // function for field
-  updateTotalField('diposit-balance', convertNewDiposit);
-  
-  // call the update balance function
-  updateBalance(convertNewDiposit, true);
+  // condition for invalid input
+  if (convertNewDiposit > 0) {
+    updateTotalField('diposit-balance', convertNewDiposit);
+    // call the update balance function
+    updateBalance(convertNewDiposit, true);
+  }
 });
 
 // withdraw balance
 document.getElementById('widthdraw-btn').addEventListener('click', function () {
   // call the function input field
   const convertNewWithdraw = getInputField('input-widthdraw');
-  // call the function field
-  updateTotalField('withdraw', convertNewWithdraw);
-
-  // call the withdraw function
-  updateBalance(convertNewWithdraw, false);
+  // condition for invalid input
+if (convertNewWithdraw > 0) {
+    // call the function field
+    updateTotalField('withdraw', convertNewWithdraw);
+    // call the withdraw function
+    updateBalance(convertNewWithdraw, false);
+}
 });
