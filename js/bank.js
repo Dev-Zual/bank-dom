@@ -20,7 +20,7 @@ function updateTotalField(totalField, convertNewInput) {
   preveousInputtTex.innerText = newDipositTotal;
 }
 // update balance
-function updateBalance(convertNewDiposit, isAdd) {
+function updateBalance(getNewBalance, isAdd) {
       // call the current balance
       const currentBlance = document.getElementById('diposit-total');
       const newBlance = currentBlance.innerText;
@@ -28,18 +28,16 @@ function updateBalance(convertNewDiposit, isAdd) {
       const converNewBlance = parseFloat(newBlance);
       // sum & call the total balance
   if (isAdd == true) {
-    currentBlance.innerText = converNewBlance + convertNewDiposit;
+    currentBlance.innerText = converNewBlance + getNewBalance;
   }
   else {
-    currentBlance.innerText = converNewBlance - convertNewDiposit;
+    currentBlance.innerText = converNewBlance - getNewBalance;
   }
 }
 
 document.getElementById('diposit-btn').addEventListener('click', function () {
-   
     // call the function input field
   const convertNewDiposit = getInputField('input-diposit');
-
     // function for field
   updateTotalField('diposit-balance', convertNewDiposit);
   
@@ -49,11 +47,11 @@ document.getElementById('diposit-btn').addEventListener('click', function () {
 
 // withdraw balance
 document.getElementById('widthdraw-btn').addEventListener('click', function () {
-    // call the function input field
+  // call the function input field
   const convertNewWithdraw = getInputField('input-widthdraw');
   // call the function field
   updateTotalField('withdraw', convertNewWithdraw);
 
   // call the withdraw function
   updateBalance(convertNewWithdraw, false);
-})
+});
