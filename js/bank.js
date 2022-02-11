@@ -19,13 +19,23 @@ function updateTotalField(totalField, convertNewInput) {
   const newDipositTotal = convertNewInput + convertPreveousAmount;
   preveousInputtTex.innerText = newDipositTotal;
 }
+// current balance
+function getCurrentBalance() {
+        // call the current balance
+        const currentBlance = document.getElementById('diposit-total');
+        const newBlance = currentBlance.innerText;
+        // convert current balance
+  const converNewBlance = parseFloat(newBlance);
+  return converNewBlance;
+}
 // update balance
 function updateBalance(getNewBalance, isAdd) {
       // call the current balance
       const currentBlance = document.getElementById('diposit-total');
-      const newBlance = currentBlance.innerText;
+ /*      const newBlance = currentBlance.innerText;
       // convert current balance
-      const converNewBlance = parseFloat(newBlance);
+      const converNewBlance = parseFloat(newBlance); */
+  const converNewBlance = getCurrentBalance();
       // sum & call the total balance
   if (isAdd == true) {
     currentBlance.innerText = converNewBlance + getNewBalance;
@@ -51,11 +61,15 @@ document.getElementById('diposit-btn').addEventListener('click', function () {
 document.getElementById('widthdraw-btn').addEventListener('click', function () {
   // call the function input field
   const convertNewWithdraw = getInputField('input-widthdraw');
+  const currentBalance = getCurrentBalance();
   // condition for invalid input
-if (convertNewWithdraw > 0) {
+  if (convertNewWithdraw > 0 && convertNewWithdraw < currentBalance) {
     // call the function field
     updateTotalField('withdraw', convertNewWithdraw);
     // call the withdraw function
     updateBalance(convertNewWithdraw, false);
-}
+  }
+  if (convertNewWithdraw > currentBalance) {
+    alert('you have not sffusient balance');
+  }
 });
