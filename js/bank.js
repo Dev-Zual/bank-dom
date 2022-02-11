@@ -19,7 +19,21 @@ function updateTotalField(totalField, convertNewInput) {
   const newDipositTotal = convertNewInput + convertPreveousAmount;
   preveousInputtTex.innerText = newDipositTotal;
 }
-
+// update balance
+function updateBalance(convertNewDiposit, isAdd) {
+      // call the current balance
+      const currentBlance = document.getElementById('diposit-total');
+      const newBlance = currentBlance.innerText;
+      // convert current balance
+      const converNewBlance = parseFloat(newBlance);
+      // sum & call the total balance
+  if (isAdd == true) {
+    currentBlance.innerText = converNewBlance + convertNewDiposit;
+  }
+  else {
+    currentBlance.innerText = converNewBlance - convertNewDiposit;
+  }
+}
 
 document.getElementById('diposit-btn').addEventListener('click', function () {
    
@@ -29,14 +43,8 @@ document.getElementById('diposit-btn').addEventListener('click', function () {
     // function for field
   updateTotalField('diposit-balance', convertNewDiposit);
   
-    // call the current balance
-    const currentBlance = document.getElementById('diposit-total');
-    const newBlance = currentBlance.innerText;
-    // convert current balance
-    const converNewBlance = parseFloat(newBlance);
-    // sum & call the total balance
-    currentBlance.innerText = converNewBlance + convertNewDiposit;
- 
+  // call the update balance function
+  updateBalance(convertNewDiposit, true);
 });
 
 // withdraw balance
@@ -46,15 +54,6 @@ document.getElementById('widthdraw-btn').addEventListener('click', function () {
   // call the function field
   updateTotalField('withdraw', convertNewWithdraw);
 
-    // minus total balance
-    const currnetTotalBalance = document.getElementById('diposit-total');
-    // set current total balance
-    const totalAmount = currnetTotalBalance.innerText;
-    // convert total ammount
-    const convertTotalAmount = parseFloat(totalAmount);
-
-    // update balance
-    currnetTotalBalance.innerText = convertTotalAmount - convertNewWithdraw;
-
-
+  // call the withdraw function
+  updateBalance(convertNewWithdraw, false);
 })
