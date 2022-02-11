@@ -7,30 +7,28 @@ function getInputField(num) {
      getInputValue.value = '';
   return convertNewInput;
 }
-
-
+// total field
+function updateTotalField(totalField, convertNewInput) {
+  // call the previous value where show balance
+  const preveousInputtTex = document.getElementById(totalField);
+  // get previous amount where show the balance
+  const preveousInputAmount = preveousInputtTex.innerText;
+  // convert previous diposit value
+  const convertPreveousAmount = parseFloat(preveousInputAmount);
+  // total amount
+  const newDipositTotal = convertNewInput + convertPreveousAmount;
+  preveousInputtTex.innerText = newDipositTotal;
+}
 
 
 document.getElementById('diposit-btn').addEventListener('click', function () {
    
-    // call the function
+    // call the function input field
   const convertNewDiposit = getInputField('input-diposit');
+
+    // function for field
+  updateTotalField('diposit-balance', convertNewDiposit);
   
-    // call the previous value where show balance
-    const preveousdipositTex = document.getElementById('diposit-balance');
-    // get previous amount where show the balance
-    const preveousDipositAmount = preveousdipositTex.innerText;
-
-    // convert previous diposit value
-    const converPreveousAmount = parseFloat(preveousDipositAmount);
-
-
-    // total amount
-    const newDipositTotal = convertNewDiposit + converPreveousAmount;
-
-    preveousdipositTex.innerText = newDipositTotal;
-
-
     // call the current balance
     const currentBlance = document.getElementById('diposit-total');
     const newBlance = currentBlance.innerText;
@@ -39,27 +37,14 @@ document.getElementById('diposit-btn').addEventListener('click', function () {
     // sum & call the total balance
     currentBlance.innerText = converNewBlance + convertNewDiposit;
  
-    
-    
 });
 
 // withdraw balance
 document.getElementById('widthdraw-btn').addEventListener('click', function () {
-    // call the function
+    // call the function input field
   const convertNewWithdraw = getInputField('input-widthdraw');
-    
-    // call current withdraw
-    const previousWithdraw = document.getElementById('withdraw');
-  // set current withdraw
-    const currentWithdraw = previousWithdraw.innerText;
-    //convert current withdraw
-    const converCurrentWithdraw = parseFloat(currentWithdraw);
-
-    // total current withdraw + previous withdraw
-    const totalWithdraw = converCurrentWithdraw + convertNewWithdraw;
-
-    // set total withdraw
-    previousWithdraw.innerText = totalWithdraw;
+  // call the function field
+  updateTotalField('withdraw', convertNewWithdraw);
 
     // minus total balance
     const currnetTotalBalance = document.getElementById('diposit-total');
